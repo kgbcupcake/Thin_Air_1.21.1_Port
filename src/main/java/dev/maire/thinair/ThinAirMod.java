@@ -4,6 +4,7 @@ import dev.maire.thinair.client.config.ThinAirConfigScreen;
 import dev.maire.thinair.config.ThinAirConfig;
 import dev.maire.thinair.init.ModCapabilities;
 import dev.maire.thinair.init.ModRegistry;
+import dev.maire.thinair.integration.create.CreateCuriosCompat;
 import dev.maire.thinair.integration.curios.CuriosIntegration;
 import dev.maire.thinair.network.ThinAirNetwork;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -60,6 +61,9 @@ public class ThinAirMod {
     private static void registerIntegrations(IEventBus modEventBus) {
         if (ModList.get().isLoaded("curios")) {
             CuriosIntegration.register(modEventBus);
+        }
+        if (ModList.get().isLoaded("create") && ModList.get().isLoaded("curios")) {
+            CreateCuriosCompat.register();
         }
     }
 
