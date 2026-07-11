@@ -18,6 +18,7 @@
   "advancements.thinair.water_breathing.description": "Breathe freely where there is no air at all",
   "advancements.thinair.water_breathing.title": "... And Hold It",
   "block.thinair.safety_lantern": "Safety Lantern",
+  "block.thinair.signal_torch": "Signal Torch",
   "death.attack.drown": "%1$s asphyxiated",
   "death.attack.drown.player": "%1$s asphyxiated whilst trying to escape %2$s",
   "effect.minecraft.water_breathing": "Free Breathing",

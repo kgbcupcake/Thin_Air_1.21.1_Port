@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "minecraft:bubble_column"
+    "minecraft:bubble_column",
+    "minecraft:end_portal",
+    "minecraft:nether_portal",
+    "minecraft:end_gateway"
   ]
 }

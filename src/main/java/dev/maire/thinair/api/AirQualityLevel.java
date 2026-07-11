@@ -177,14 +177,16 @@ public enum AirQualityLevel implements StringRepresentable {
         }
         if (ModList.get().isLoaded("create")) {
             try {
-                java.util.List<ItemStack> backtanks = com.simibubi.create.content.equipment.armor.BacktankUtil
-                        .getAllWithAir(entity);
-                if (!backtanks.isEmpty()) {
-                    if (entity.level().getGameTime() % 20 == 0) {
-                        com.simibubi.create.content.equipment.armor.BacktankUtil
-                                .consumeAir(entity, backtanks.getFirst(), 1);
+                if (com.simibubi.create.content.equipment.armor.DivingHelmetItem.isWornBy(entity)) {
+                    java.util.List<ItemStack> backtanks = com.simibubi.create.content.equipment.armor.BacktankUtil
+                            .getAllWithAir(entity);
+                    if (!backtanks.isEmpty()) {
+                        if (entity.level().getGameTime() % 20 == 0) {
+                            com.simibubi.create.content.equipment.armor.BacktankUtil
+                                    .consumeAir(entity, backtanks.getFirst(), 1);
+                        }
+                        return true;
                     }
-                    return true;
                 }
             } catch (NoClassDefFoundError ignored) {
             }
