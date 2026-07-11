@@ -9,10 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-07-11
+
 ### Added
 
-- Optional **[Create](https://modrinth.com/mod/create)** integration: backtanks provide breathable air in yellow and red air when worn via Create's own armor slot (`BacktankUtil`)
-
+- Optional **[Create](https://modrinth.com/mod/create)** integration: backtanks provide breathable air in yellow and red air when worn via Create's own chest-armor slot, or via the Curios back slot (`BacktankUtil`)
 - `back` Curios slot granted to the player entity so Create backtanks have somewhere to go
 
 ### Fixed
@@ -29,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Known limitations
 
-- **Create backtanks do not work in a Curios back slot** — Create only exposes backtanks through its own armor/chest equipment path; a Curios bridge was attempted (`CreateCuriosCompat`) but cannot fully replicate Create's behavior outside that slot
+- **Create backtanks worn only in the Curios back slot won't render on the player model** — breathable air works correctly either way (`CreateCuriosCompat` feeds the Curios back slot into the same `BacktankUtil` supplier list Create's own Diving Helmet logic reads from), but Create's `BacktankArmorLayer` renderer and `BacktankItem.getWornBy` check the vanilla chest-armor slot specifically, so a Curios-only backtank is functional but invisible; wear it in Create's chest slot instead for the visual
 
 ## [1.0.3] - 2026-06-14
 
@@ -133,7 +134,8 @@ First release of the NeoForge 1.21.1 port by [Marie (kgbcupcake)](https://github
 
 - Bundled compatibility layers for Create and other mods (compatibility remains optional and separate, matching port goals)
 
-[Unreleased]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/kgbcupcake/ThinAir-ReLived/compare/v1.0.0...v1.0.1
