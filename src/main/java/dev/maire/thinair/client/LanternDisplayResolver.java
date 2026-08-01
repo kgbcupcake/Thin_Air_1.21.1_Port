@@ -19,15 +19,6 @@ public final class LanternDisplayResolver {
     }
 
     public static AirQualityLevel resolveAirQualityLevel(ItemStack itemStack, @Nullable LivingEntity entity) {
-        CustomData customData = itemStack.get(DataComponents.CUSTOM_DATA);
-        if (customData != null) {
-            CompoundTag compoundTag = customData.copyTag();
-            if (compoundTag.contains(SafetyLanternBlock.TAG_AIR_QUALITY_LEVEL, Tag.TAG_INT)) {
-                int airQualityLevel = compoundTag.getInt(SafetyLanternBlock.TAG_AIR_QUALITY_LEVEL);
-                return AirQualityLevel.values()[airQualityLevel];
-            }
-        }
-
         if (entity == null && itemStack.getEntityRepresentation() instanceof LivingEntity livingEntity) {
             entity = livingEntity;
         }
@@ -36,6 +27,15 @@ public final class LanternDisplayResolver {
             AirQualityLevel cached = ClientPlayerAirQualityCache.get(entity.getId());
             if (cached != null) {
                 return cached;
+            }
+        }
+
+        CustomData customData = itemStack.get(DataComponents.CUSTOM_DATA);
+        if (customData != null) {
+            CompoundTag compoundTag = customData.copyTag();
+            if (compoundTag.contains(SafetyLanternBlock.TAG_AIR_QUALITY_LEVEL, Tag.TAG_INT)) {
+                int airQualityLevel = compoundTag.getInt(SafetyLanternBlock.TAG_AIR_QUALITY_LEVEL);
+                return AirQualityLevel.values()[airQualityLevel];
             }
         }
 

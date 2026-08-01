@@ -71,8 +71,9 @@ public class AirBubbleTracker {
     }
 
     public static void onChunkLoad(ServerLevel level, LevelChunk chunk) {
-        CHUNKS_TO_SCAN.add(chunk.getPos());
-        CHUNK_SCANNING_PROGRESS.add(Map.entry(chunk.getPos(), getChunkStartingPosition(chunk)));
+        if (CHUNKS_TO_SCAN.add(chunk.getPos())) {
+            CHUNK_SCANNING_PROGRESS.add(Map.entry(chunk.getPos(), getChunkStartingPosition(chunk)));
+        }
     }
 
     public static void onChunkUnload(ServerLevel level, LevelChunk chunk) {
